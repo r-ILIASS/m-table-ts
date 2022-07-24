@@ -1,6 +1,10 @@
+import Navbar from "./components/Navbar"
+
 function App() {
   return (
-    <div><h1 className="text-blue-500 font-black">TailwindCSS</h1></div>
+    <div className="px-5 max-w-7xl mx-auto">
+      <Navbar />
+    </div>
   )
 }
 

@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**************** BUTTONS ******************/
+/* skeleton of a button without any colors */
+.btn-primary {
+  @apply py-1 px-4 rounded-lg text-sm text-center font-semibold;
+}
+
+.btn-register {
+  @apply btn-primary bg-blue-500 text-white;
+}
+
+.btn-login {
+  @apply btn-primary border border-blue-500 text-blue-500;
+}
+
+/**************** NAVIGATION ******************/
+.navlink {
+  @apply text-gray-400 tracking-wide py-3;
+}
