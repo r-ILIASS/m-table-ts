@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { getGenres } from "../lib/get";
+import { getGenres, getMovies } from "../lib/get";
 import { GenreType } from "../lib/types";
 
 export const useData = () => {
+  const [movies, setmovies] = useState(null);
   const [genres, setGenres] = useState<GenreType[] | null>(null);
   // const [selectedGenre, setSelectedGenre] = useState<string>("");
   const [loading, setLoading] = useState(false);
@@ -12,6 +13,11 @@ export const useData = () => {
     try {
       setLoading(true);
 
+      // fetch movies
+      const { data: movies } = await getMovies();
+      setmovies(movies);
+
+      // fetch genres
       const { data: genres } = await getGenres();
       setGenres(genres);
 
@@ -27,6 +33,7 @@ export const useData = () => {
   }, []);
 
   return {
+    movies,
     genres,
     loading,
     error,

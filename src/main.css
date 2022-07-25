@@ -36,7 +36,7 @@ ul {
 }
 
 li {
-  @apply rounded-md font-medium text-xs text-center p-2;
+  @apply rounded-md font-semibold text-xs text-center p-2;
 }
 
 /**************** TABLE ****************/
