@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { getGenres, getMovies } from "../lib/get";
+import { getGenres } from "../lib/genresService";
+import { getMovies } from "../lib/moviesService";
 import { GenreType } from "../lib/types";
 
 export const useData = () => {
