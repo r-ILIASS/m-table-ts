@@ -1,8 +1,13 @@
-import { Movie } from "../lib/types";
+import { MovieType } from "../lib/types";
 import EmptyHeart from "../assets/empty-heart.svg";
 import FullHeart from "../assets/full-heart.svg";
 
-const MoviesTable = ({ data }: { data: Movie[] | null }) => {
+interface Props {
+  data: MovieType[] | null;
+  handleLike: Function;
+}
+
+const MoviesTable = ({ data, handleLike }: Props) => {
   return (
     <div className="w-full">
       <table>
@@ -26,9 +31,9 @@ const MoviesTable = ({ data }: { data: Movie[] | null }) => {
                 <td>{element.dailyRentalRate}</td>
                 <td className="min-w-[54px]">
                   {element.isLiked ? (
-                    <img className="h-[1.5em]" src={FullHeart}></img>
+                    <img onClick={() => handleLike(element)} className="h-[1.5em] cursor-pointer" src={FullHeart}></img>
                   ) : (
-                    <img className="h-[1.5em]" src={EmptyHeart}></img>
+                    <img onClick={() => handleLike(element)} className="h-[1.5em] cursor-pointer" src={EmptyHeart}></img>
                   )}
                 </td>
                 <td>

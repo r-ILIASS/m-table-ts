@@ -3,7 +3,7 @@ export interface GenreType {
   name: string;
 }
 
-export interface Movie {
+export interface MovieType {
   _id: string;
   title: string;
   genre: GenreType;

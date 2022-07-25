@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getGenres } from "../lib/genresService";
-import { getMovies } from "../lib/moviesService";
-import { GenreType } from "../lib/types";
+import { getMovies, toggleMovieLike } from "../lib/moviesService";
+import { MovieType, GenreType } from "../lib/types";
 
 export const useData = () => {
   const [movies, setmovies] = useState(null);
@@ -33,9 +33,14 @@ export const useData = () => {
     fetchData();
   }, []);
 
+  const handleLike = (movie: MovieType) => {
+    toggleMovieLike(movie);
+  };
+
   return {
     movies,
     genres,
+    handleLike,
     loading,
     error,
   };
