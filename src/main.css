@@ -3,8 +3,12 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply bg-slate-100;
+}
+
 /**************** BUTTONS ******************/
-/* skeleton of a button without any colors */
+/* base */
 .btn-primary {
   @apply py-1 px-4 rounded-lg text-sm text-center font-semibold;
 }
@@ -14,10 +18,19 @@
 }
 
 .btn-login {
-  @apply btn-primary border border-blue-500 text-blue-500;
+  @apply btn-primary border-2 border-blue-500 text-blue-500;
 }
 
 /**************** NAVIGATION ******************/
 .navlink {
   @apply text-gray-400 tracking-wide py-3;
+}
+
+/**************** LISTS ****************/
+ul {
+  @apply bg-white p-3 max-w-[8rem] border flex flex-col justify-center space-y-2;
+}
+
+li {
+  @apply rounded-md font-medium text-xs text-center p-2;
 }
