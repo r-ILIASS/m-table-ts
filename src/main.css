@@ -21,6 +21,10 @@ body {
   @apply btn-primary border-2 border-blue-500 text-blue-500;
 }
 
+.btn-delete {
+  @apply btn-primary bg-red-500 text-white;
+}
+
 /**************** NAVIGATION ******************/
 .navlink {
   @apply text-gray-400 tracking-wide py-3;
@@ -28,9 +32,34 @@ body {
 
 /**************** LISTS ****************/
 ul {
-  @apply bg-white p-3 max-w-[8rem] border flex flex-col justify-center space-y-2;
+  @apply bg-white p-3 w-[8rem] border flex flex-col justify-center space-y-2;
 }
 
 li {
   @apply rounded-md font-medium text-xs text-center p-2;
+}
+
+/**************** TABLE ****************/
+table {
+  @apply bg-white w-full text-left;
+}
+
+tr {
+  @apply border;
+}
+
+th {
+  @apply px-4 py-3 text-sm font-semibold;
+}
+
+td {
+  @apply px-4 py-3 text-sm;
+}
+
+td:first-child {
+  @apply min-w-[200px];
+}
+
+td:last-child {
+  @apply text-right;
 }
