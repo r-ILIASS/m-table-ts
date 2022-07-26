@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getGenres } from "../lib/genresService";
-import { getMovies, toggleMovieLike } from "../lib/moviesService";
+import { getMovies, toggleMovieLike, deleteMovie } from "../lib/moviesService";
 import { MovieType, GenreType } from "../lib/types";
 
 const initialGenre: GenreType = {
@@ -66,8 +66,9 @@ export const useData = () => {
     }
   };
 
-  const handleDelete = (movie: MovieType) => {
-    console.log("Deleted: ", movie);
+  const handleDelete = async (movie: MovieType) => {
+    const res = await deleteMovie(movie);
+    console.log(res);
   };
 
   return {

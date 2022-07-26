@@ -28,3 +28,7 @@ export const toggleMovieLike = (movie: MovieType) => {
     return http.put(`/movies/${movie._id}`, requestBody);
   }
 };
+
+export const deleteMovie = (movie: MovieType) => {
+  return http.delete(`/movies/${movie._id}`);
+};
