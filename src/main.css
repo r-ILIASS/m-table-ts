@@ -41,7 +41,7 @@ li {
 
 /**************** TABLE ****************/
 table {
-  @apply bg-white w-full text-left;
+  @apply bg-white w-full text-left mb-5;
 }
 
 tr {

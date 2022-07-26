@@ -1,9 +1,11 @@
+import PaginationControls from "./common/PaginationControls";
+
 import { MovieType } from "../lib/types";
 import EmptyHeart from "../assets/empty-heart.svg";
 import FullHeart from "../assets/full-heart.svg";
 
 // TODO: get the user from the state after auth
-const user = true;
+const user = false;
 
 interface Props {
   data: MovieType[];
@@ -64,6 +66,7 @@ const MoviesTable = ({ data, handleLike, handleDelete }: Props) => {
           ))}
         </tbody>
       </table>
+      <PaginationControls />
     </div>
   );
 };

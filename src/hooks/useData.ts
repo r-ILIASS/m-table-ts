@@ -74,6 +74,7 @@ export const useData = () => {
       const tmpState = movies.filter((x) => x._id !== movie._id);
       setMovies(tmpState);
     } catch (error) {
+      // TODO: log error somewhere
       console.log("ERROR ON DELETE", error);
     }
   };
