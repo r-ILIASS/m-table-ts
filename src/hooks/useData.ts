@@ -3,9 +3,23 @@ import { getGenres } from "../lib/genresService";
 import { getMovies, toggleMovieLike } from "../lib/moviesService";
 import { MovieType, GenreType } from "../lib/types";
 
+const initialGenre: GenreType = {
+  _id: "",
+  name: "",
+};
+
+const initialMovie: MovieType = {
+  _id: "",
+  title: "",
+  genre: initialGenre,
+  dailyRentalRate: 0,
+  numberInStock: 0,
+  isLiked: false,
+};
+
 export const useData = () => {
-  const [movies, setmovies] = useState(null);
-  const [genres, setGenres] = useState<GenreType[] | null>(null);
+  const [movies, setmovies] = useState<MovieType[]>([initialMovie]);
+  const [genres, setGenres] = useState<GenreType[]>([initialGenre]);
   // const [selectedGenre, setSelectedGenre] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -35,8 +49,13 @@ export const useData = () => {
 
   // handlers
   const handleLike = async (movie: MovieType) => {
-    const res = await toggleMovieLike(movie);
-    console.log("res", res);
+    try {
+      const res = await toggleMovieLike(movie);
+      console.log("res", res);
+    } catch (error) {
+      // TODO: log error somewhere
+      console.log(error);
+    }
   };
 
   return {
