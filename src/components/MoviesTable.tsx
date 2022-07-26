@@ -2,6 +2,9 @@ import { MovieType } from "../lib/types";
 import EmptyHeart from "../assets/empty-heart.svg";
 import FullHeart from "../assets/full-heart.svg";
 
+// TODO: get the user from the state after auth
+const user = false;
+
 interface Props {
   data: MovieType[];
   handleLike: Function;
@@ -18,7 +21,7 @@ const MoviesTable = ({ data, handleLike }: Props) => {
             <th>Stock</th>
             <th>Rate</th>
             <th></th>
-            <th></th>
+            {user && <th></th>}
           </tr>
         </thead>
         <tbody>
@@ -27,7 +30,10 @@ const MoviesTable = ({ data, handleLike }: Props) => {
               <td>{element.title}</td>
               <td>{element.genre.name}</td>
               <td>{element.numberInStock}</td>
-              <td>{element.dailyRentalRate}</td>
+              <td>
+                <span className="text-xs">$ </span>
+                {element.dailyRentalRate}
+              </td>
               <td className="min-w-[54px]">
                 {element.isLiked ? (
                   <img
@@ -43,9 +49,11 @@ const MoviesTable = ({ data, handleLike }: Props) => {
                   ></img>
                 )}
               </td>
-              <td>
-                <span className="btn-delete">Delete</span>
-              </td>
+              {user && (
+                <td>
+                  <span className="btn-delete">Delete</span>
+                </td>
+              )}
             </tr>
           ))}
         </tbody>
