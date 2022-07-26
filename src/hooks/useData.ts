@@ -62,13 +62,20 @@ export const useData = () => {
       setMovies(tmpState);
     } catch (error) {
       // TODO: log error somewhere
-      console.log(error);
+      console.log("ERROR ON LIKE", error);
     }
   };
 
   const handleDelete = async (movie: MovieType) => {
-    const res = await deleteMovie(movie);
-    console.log(res);
+    try {
+      // delete movie on the backend
+      await deleteMovie(movie);
+      /* UPDATE THE UI */
+      const tmpState = movies.filter((x) => x._id !== movie._id);
+      setMovies(tmpState);
+    } catch (error) {
+      console.log("ERROR ON DELETE", error);
+    }
   };
 
   return {
