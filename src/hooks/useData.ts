@@ -33,8 +33,10 @@ export const useData = () => {
     fetchData();
   }, []);
 
-  const handleLike = (movie: MovieType) => {
-    toggleMovieLike(movie);
+  // handlers
+  const handleLike = async (movie: MovieType) => {
+    const res = await toggleMovieLike(movie);
+    console.log("res", res);
   };
 
   return {

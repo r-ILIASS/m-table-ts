@@ -6,5 +6,25 @@ export const getMovies = () => {
 };
 
 export const toggleMovieLike = (movie: MovieType) => {
-  console.log("toggle like on movie: ", movie);
+  if (movie._id) {
+    interface RequestBody {
+      title: string;
+      genreId: string;
+      numberInStock: number;
+      dailyRentalRate: number;
+      isLiked: boolean;
+    }
+    // reshape the object to match the
+    // API's request object structure
+    const requestBody: RequestBody = {
+      title: movie.title,
+      genreId: movie.genre._id,
+      numberInStock: movie.numberInStock,
+      dailyRentalRate: movie.dailyRentalRate,
+      isLiked: !movie.isLiked,
+    };
+    // return a Promise that saves updates
+    // the new object on the database
+    return http.put(`/movies/${movie._id}`, requestBody);
+  }
 };
