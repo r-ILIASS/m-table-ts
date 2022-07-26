@@ -3,17 +3,32 @@ import PaginationControls from "./common/PaginationControls";
 import { MovieType } from "../lib/types";
 import EmptyHeart from "../assets/empty-heart.svg";
 import FullHeart from "../assets/full-heart.svg";
+import { paginate } from "../lib/paginate";
 
 // TODO: get the user from the state after auth
 const user = false;
 
 interface Props {
   data: MovieType[];
+  currentPage: number;
+  pageSize: number;
+  setCurrentPage: Function;
   handleLike: Function;
   handleDelete: Function;
 }
 
-const MoviesTable = ({ data, handleLike, handleDelete }: Props) => {
+const MoviesTable = ({
+  data,
+  currentPage,
+  pageSize,
+  setCurrentPage,
+  handleLike,
+  handleDelete,
+}: Props) => {
+  // paginate the data
+  const paginatedData = paginate(currentPage, pageSize, data);
+  console.log(paginatedData);
+
   return (
     <div className="w-full">
       <table>
@@ -28,7 +43,7 @@ const MoviesTable = ({ data, handleLike, handleDelete }: Props) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((movie) => (
+          {paginatedData.map((movie) => (
             <tr key={movie._id}>
               <td>{movie.title}</td>
               <td>{movie.genre.name}</td>
@@ -66,7 +81,12 @@ const MoviesTable = ({ data, handleLike, handleDelete }: Props) => {
           ))}
         </tbody>
       </table>
-      <PaginationControls />
+      <PaginationControls
+        pageSize={pageSize}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+        dataLength={data.length}
+      />
     </div>
   );
 };

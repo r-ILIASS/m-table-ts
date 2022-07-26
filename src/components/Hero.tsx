@@ -3,8 +3,17 @@ import ListGroup from "./common/ListGroup";
 import MoviesTable from "./MoviesTable";
 
 const Hero = () => {
-  const { movies, genres, handleLike, handleDelete, loading, error } =
-    useData();
+  const {
+    movies,
+    genres,
+    currentPage,
+    setCurrentPage,
+    pageSize,
+    handleLike,
+    handleDelete,
+    loading,
+    error,
+  } = useData();
 
   if (error) return <p>Something went wrong</p>;
   if (loading) return <p>Loading ...</p>;
@@ -14,6 +23,9 @@ const Hero = () => {
       <ListGroup data={genres} />
       <MoviesTable
         data={movies}
+        currentPage={currentPage}
+        pageSize={pageSize}
+        setCurrentPage={setCurrentPage}
         handleLike={handleLike}
         handleDelete={handleDelete}
       />

@@ -1,11 +1,28 @@
-const PaginationControls = () => {
-  const currentPage = 2;
-  const pages = [1, 2, 3, 4, 5, 6];
+import _ from "lodash";
+
+interface Props {
+  currentPage: number;
+  dataLength: number;
+  pageSize: number;
+  setCurrentPage: Function;
+}
+
+const PaginationControls = ({
+  currentPage,
+  pageSize,
+  setCurrentPage,
+  dataLength,
+}: Props) => {
+  const pagesCount = Math.ceil(dataLength / pageSize);
+  if (pagesCount === 1) return null;
+  const pages = _.range(1, pagesCount + 1);
 
   return (
-    <div className="flex space-x-3">
+    <div className="flex space-x-3 select-none">
       {pages.map((page) => (
         <span
+          key={page}
+          onClick={() => setCurrentPage(page)}
           className={`${
             currentPage === page && "bg-blue-500 text-white font-semibold"
           } ${
