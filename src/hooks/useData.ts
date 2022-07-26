@@ -21,23 +21,21 @@ const initialMovie: MovieType = {
 export const useData = () => {
   const [movies, setMovies] = useState<MovieType[]>([initialMovie]);
   const [genres, setGenres] = useState<GenreType[]>([initialGenre]);
+  const [selectedGenre, setSelectedGenre] = useState<string>("Action");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const pageSize = 5;
+  const pageSize = 15;
 
   const fetchData = async () => {
     try {
       setLoading(true);
-
       // fetch movies
       const { data: movies } = await getMovies();
       setMovies(movies);
-
       // fetch genres
       const { data: genres } = await getGenres();
       setGenres(genres);
-
       setLoading(false);
     } catch (error) {
       setError(true);
@@ -84,6 +82,8 @@ export const useData = () => {
   return {
     movies,
     genres,
+    selectedGenre,
+    setSelectedGenre,
     currentPage,
     setCurrentPage,
     pageSize,

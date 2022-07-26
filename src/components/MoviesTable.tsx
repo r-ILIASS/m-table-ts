@@ -27,7 +27,6 @@ const MoviesTable = ({
 }: Props) => {
   // paginate the data
   const paginatedData = paginate(currentPage, pageSize, data);
-  console.log(paginatedData);
 
   return (
     <div className="w-full">

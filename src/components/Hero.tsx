@@ -6,6 +6,8 @@ const Hero = () => {
   const {
     movies,
     genres,
+    selectedGenre,
+    setSelectedGenre,
     currentPage,
     setCurrentPage,
     pageSize,
@@ -20,7 +22,11 @@ const Hero = () => {
 
   return (
     <main className="px-5 py-10 max-w-7xl mx-auto flex space-x-16">
-      <ListGroup data={genres} />
+      <ListGroup
+        data={genres}
+        selectedItem={selectedGenre}
+        setSelectedItem={setSelectedGenre}
+      />
       <MoviesTable
         data={movies}
         currentPage={currentPage}
