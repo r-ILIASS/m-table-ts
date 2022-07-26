@@ -66,10 +66,15 @@ export const useData = () => {
     }
   };
 
+  const handleDelete = (movie: MovieType) => {
+    console.log("Deleted: ", movie);
+  };
+
   return {
     movies,
     genres,
     handleLike,
+    handleDelete,
     loading,
     error,
   };

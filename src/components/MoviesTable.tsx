@@ -3,14 +3,15 @@ import EmptyHeart from "../assets/empty-heart.svg";
 import FullHeart from "../assets/full-heart.svg";
 
 // TODO: get the user from the state after auth
-const user = false;
+const user = true;
 
 interface Props {
   data: MovieType[];
   handleLike: Function;
+  handleDelete: Function;
 }
 
-const MoviesTable = ({ data, handleLike }: Props) => {
+const MoviesTable = ({ data, handleLike, handleDelete }: Props) => {
   return (
     <div className="w-full">
       <table>
@@ -25,25 +26,25 @@ const MoviesTable = ({ data, handleLike }: Props) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((element) => (
-            <tr key={element._id}>
-              <td>{element.title}</td>
-              <td>{element.genre.name}</td>
-              <td>{element.numberInStock}</td>
+          {data.map((movie) => (
+            <tr key={movie._id}>
+              <td>{movie.title}</td>
+              <td>{movie.genre.name}</td>
+              <td>{movie.numberInStock}</td>
               <td>
                 <span className="text-xs">$ </span>
-                {element.dailyRentalRate}
+                {movie.dailyRentalRate}
               </td>
               <td className="min-w-[54px]">
-                {element.isLiked ? (
+                {movie.isLiked ? (
                   <img
-                    onClick={() => handleLike(element)}
+                    onClick={() => handleLike(movie)}
                     className="h-[1.5em] cursor-pointer"
                     src={FullHeart}
                   ></img>
                 ) : (
                   <img
-                    onClick={() => handleLike(element)}
+                    onClick={() => handleLike(movie)}
                     className="h-[1.5em] cursor-pointer"
                     src={EmptyHeart}
                   ></img>
@@ -51,7 +52,12 @@ const MoviesTable = ({ data, handleLike }: Props) => {
               </td>
               {user && (
                 <td>
-                  <span className="btn-delete">Delete</span>
+                  <span
+                    onClick={() => handleDelete(movie)}
+                    className="btn-delete"
+                  >
+                    Delete
+                  </span>
                 </td>
               )}
             </tr>
