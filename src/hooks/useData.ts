@@ -17,10 +17,10 @@ const initialMovie: MovieType = {
   isLiked: false,
 };
 
+// fetches all needed data and manages the global state
 export const useData = () => {
-  const [movies, setmovies] = useState<MovieType[]>([initialMovie]);
+  const [movies, setMovies] = useState<MovieType[]>([initialMovie]);
   const [genres, setGenres] = useState<GenreType[]>([initialGenre]);
-  // const [selectedGenre, setSelectedGenre] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -30,7 +30,7 @@ export const useData = () => {
 
       // fetch movies
       const { data: movies } = await getMovies();
-      setmovies(movies);
+      setMovies(movies);
 
       // fetch genres
       const { data: genres } = await getGenres();
@@ -50,8 +50,16 @@ export const useData = () => {
   // handlers
   const handleLike = async (movie: MovieType) => {
     try {
-      const res = await toggleMovieLike(movie);
-      console.log("res", res);
+      // toggle like on the backend
+      await toggleMovieLike(movie);
+      /* UPDATE THE UI */
+      // copy movies state and find index of liked movie
+      const tmpState = [...movies];
+      const indexOfLiked = movies.indexOf(movie);
+      // toggle like on tmpState
+      tmpState[indexOfLiked].isLiked = !tmpState[indexOfLiked].isLiked;
+      // update movies state with manipulated tmpState
+      setMovies(tmpState);
     } catch (error) {
       // TODO: log error somewhere
       console.log(error);
