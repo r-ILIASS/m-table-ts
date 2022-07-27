@@ -1,3 +1,5 @@
+import { Link, NavLink } from "react-router-dom";
+
 import Logo from "../assets/logo.svg";
 
 const Navbar = () => {
@@ -17,9 +19,30 @@ const Navbar = () => {
       {/* second row */}
       <div className="border-b border-gray-300">
         <nav className="px-5 flex space-x-5 mx-auto max-w-7xl">
-          <span className="navlink border-b-2 border-blue-500">Movies</span>
-          <span className="navlink">Customers</span>
-          <span className="navlink">Rentals</span>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? "active-navlink" : "inactive-navlink"
+            }
+          >
+            Movies
+          </NavLink>
+          <NavLink
+            to="/customers"
+            className={({ isActive }) =>
+              isActive ? "active-navlink" : "inactive-navlink"
+            }
+          >
+            Customers
+          </NavLink>
+          <NavLink
+            to="/rentals"
+            className={({ isActive }) =>
+              isActive ? "active-navlink" : "inactive-navlink"
+            }
+          >
+            Rentals
+          </NavLink>
         </nav>
       </div>
     </header>

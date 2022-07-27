@@ -17,6 +17,7 @@ const Hero = () => {
     error,
   } = useData();
 
+  // TODO: create a loading and error component
   if (error) return <p>Something went wrong</p>;
   if (loading) return <p>Loading ...</p>;
 

@@ -27,7 +27,15 @@ body {
 
 /**************** NAVIGATION ******************/
 .navlink {
-  @apply text-gray-400 tracking-wide py-3;
+  @apply tracking-wide py-3;
+}
+
+.inactive-navlink {
+  @apply navlink text-gray-400;
+}
+
+.active-navlink {
+  @apply navlink text-blue-500 font-semibold shadow-[0px_-3px_0px_0px_#3482F6_inset];
 }
 
 /**************** LISTS ****************/

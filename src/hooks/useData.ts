@@ -21,7 +21,7 @@ const initialMovie: MovieType = {
 export const useData = () => {
   const [movies, setMovies] = useState<MovieType[]>([initialMovie]);
   const [genres, setGenres] = useState<GenreType[]>([initialGenre]);
-  const [selectedGenre, setSelectedGenre] = useState<string>("Action");
+  const [selectedGenre, setSelectedGenre] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
