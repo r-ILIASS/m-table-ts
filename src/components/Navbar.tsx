@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import Logo from "../assets/logo.svg";
 
@@ -44,6 +44,8 @@ const Navbar = () => {
             Rentals
           </NavLink>
         </nav>
+        {/* SEARCH BAR */}
+        <div></div>
       </div>
     </header>
   );

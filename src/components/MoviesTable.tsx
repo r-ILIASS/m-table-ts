@@ -86,6 +86,17 @@ const MoviesTable = ({
             </tr>
           ))}
         </tbody>
+        {paginatedData.length === 0 && (
+          <tbody>
+            <tr>
+              <td className="text-red-500">
+                There are no {selectedGenre.toLowerCase() + " "}movies in the
+                database
+              </td>
+              <td></td>
+            </tr>
+          </tbody>
+        )}
       </table>
       <PaginationControls
         pageSize={pageSize}
