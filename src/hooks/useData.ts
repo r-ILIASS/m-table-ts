@@ -22,6 +22,7 @@ export const useData = () => {
   const [movies, setMovies] = useState<MovieType[]>([initialMovie]);
   const [genres, setGenres] = useState<GenreType[]>([initialGenre]);
   const [selectedGenre, setSelectedGenre] = useState<string>("");
+  const [searchQuery, setSearchQuery] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -84,6 +85,8 @@ export const useData = () => {
     genres,
     selectedGenre,
     setSelectedGenre,
+    searchQuery,
+    setSearchQuery,
     currentPage,
     setCurrentPage,
     pageSize,
