@@ -35,7 +35,18 @@ body {
 }
 
 .active-navlink {
-  @apply navlink text-blue-500 font-semibold shadow-[0px_-3px_0px_0px_#3482F6_inset];
+  @apply navlink relative text-blue-500 font-semibold;
+}
+
+.active-navlink::after {
+  content: "";
+  position: absolute;
+  height: 3px;
+  bottom: 0px;
+  background-color: #3482f6;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
 }
 
 /**************** LISTS ****************/
