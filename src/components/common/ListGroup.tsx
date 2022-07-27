@@ -13,7 +13,11 @@ const ListGroup = ({ data, selectedItem, setSelectedItem }: Props) => {
         {data.map((element) => (
           <li
             key={element._id}
-            onClick={() => setSelectedItem(element.name)}
+            onClick={() =>
+              selectedItem === element.name
+                ? setSelectedItem("")
+                : setSelectedItem(element.name)
+            }
             className={`${
               element.name === selectedItem &&
               "bg-blue-100 text-blue-500 font-semibold"
