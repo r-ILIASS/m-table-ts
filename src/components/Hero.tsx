@@ -30,6 +30,7 @@ const Hero = () => {
       <MoviesTable
         data={movies}
         currentPage={currentPage}
+        selectedGenre={selectedGenre}
         pageSize={pageSize}
         setCurrentPage={setCurrentPage}
         handleLike={handleLike}

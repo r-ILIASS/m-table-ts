@@ -12,6 +12,7 @@ interface Props {
   data: MovieType[];
   currentPage: number;
   pageSize: number;
+  selectedGenre: string;
   setCurrentPage: Function;
   handleLike: Function;
   handleDelete: Function;
@@ -20,13 +21,19 @@ interface Props {
 const MoviesTable = ({
   data,
   currentPage,
+  selectedGenre,
   pageSize,
   setCurrentPage,
   handleLike,
   handleDelete,
 }: Props) => {
+  // filter by genre
+  let filtered;
+  if (selectedGenre === "") filtered = [...data];
+  else filtered = data.filter((x) => x.genre.name === selectedGenre);
+
   // paginate the data
-  const paginatedData = paginate(currentPage, pageSize, data);
+  const paginatedData = paginate(currentPage, pageSize, filtered);
 
   return (
     <div className="w-full">
@@ -84,7 +91,7 @@ const MoviesTable = ({
         pageSize={pageSize}
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
-        dataLength={data.length}
+        dataLength={filtered.length}
       />
     </div>
   );

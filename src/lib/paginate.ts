@@ -1,4 +1,5 @@
-/** Gets elements on the current page respective to pageSize */
+/** returns elements on the current selected
+ * page respective to the page size */
 export const paginate = (
   currentPage: number,
   pageSize: number,
