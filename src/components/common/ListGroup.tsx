@@ -1,3 +1,5 @@
+// TODO: set currentPage to 1 when switching genres
+
 import { GenreType } from "../../lib/types";
 
 interface Props {

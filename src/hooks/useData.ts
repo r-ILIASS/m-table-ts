@@ -51,15 +51,11 @@ export const useData = () => {
   // handlers
   const handleLike = async (movie: MovieType) => {
     try {
-      // toggle like on the backend
       await toggleMovieLike(movie);
       /* UPDATE THE UI */
-      // copy movies state and find index of liked movie
       const tmpState = [...movies];
       const indexOfLiked = movies.indexOf(movie);
-      // toggle like on tmpState
       tmpState[indexOfLiked].isLiked = !tmpState[indexOfLiked].isLiked;
-      // update movies state with manipulated tmpState
       setMovies(tmpState);
     } catch (error) {
       // TODO: log error somewhere

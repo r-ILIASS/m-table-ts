@@ -1,13 +1,13 @@
 // TODO: REFACTOR
 
 import { NavLink } from "react-router-dom";
-
+// assets
 import Logo from "../assets/logo.svg";
 
 const Navbar = () => {
   return (
     <header className="mx-auto bg-white">
-      {/* first row */}
+      {/* FIRST ROW */}
       <div className="border-b border-gray-300">
         <div className="px-5 mx-auto max-w-7xl flex items-center justify-between py-2">
           <img src={Logo} alt="m-table" />
@@ -18,7 +18,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* second row */}
+      {/* SECOND ROW */}
       <div className="border-b border-gray-300">
         <div className="mx-auto max-w-7xl flex items-center justify-between px-5 ">
           {/* NAVIGATION */}

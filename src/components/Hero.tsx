@@ -22,7 +22,7 @@ const Hero = () => {
   if (loading) return <p>Loading ...</p>;
 
   return (
-    <main className="px-5 py-10 max-w-7xl mx-auto flex space-x-16">
+    <main className="px-5 py-10 max-w-7xl mx-auto flex space-x-8">
       <ListGroup
         data={genres}
         selectedItem={selectedGenre}
